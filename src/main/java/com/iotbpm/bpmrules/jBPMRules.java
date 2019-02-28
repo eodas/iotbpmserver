@@ -24,9 +24,9 @@ import org.jbpm.test.JBPMHelper;
 import org.jbpm.process.instance.event.listeners.RuleAwareProcessEventLister;
 import org.jbpm.process.instance.event.listeners.TriggerRulesEventListener;
 
-import com.iotbpm.model.Devices;
-import com.iotbpm.model.DevicesList;
-import com.iotbpm.model.ServerEvent;
+//import com.iotbpm.model.Devices;
+//import com.iotbpm.model.DevicesList;
+import com.iotbpm.model.DeviceEvent;
 import com.iotbpm.model.StateList;
 
 import com.iotbpm.util.AgendaListener;
@@ -39,7 +39,7 @@ import com.iotbpm.util.WorkingMemoryListener;
 public class jBPMRules {
 
 	private StateList stateList;
-	private DevicesList devices;
+//	private DevicesList devices;
 	private KieSession kSession;
 	private KieContainer kContainer;
 	private RuntimeManager manager;
@@ -55,10 +55,10 @@ public class jBPMRules {
 
 	private final Logger logger = LoggerFactory.getLogger(jBPMRules.class);
 
-	public jBPMRules(DevicesList devices, String kSessionType, String kSessionName, String processID,
-			StateList stateList, String knowledgeDebug) {
+	public jBPMRules(String kSessionType, String kSessionName, String processID,
+			StateList stateList, String knowledgeDebug) { // DevicesList devices, 
 		super();
-		this.devices = devices;
+//		this.devices = devices;
 		this.knowledgeDebug = knowledgeDebug;
 		this.kSessionType = kSessionType;
 		this.kSessionName = kSessionName;
@@ -146,7 +146,7 @@ public class jBPMRules {
 	}
 	// test procedure for kSessionType=getRuntimeManager
 
-	public String receive(ServerEvent serverEvent) {
+	public String receive(DeviceEvent deviceEvent) {
 		String response = "";
 		ProcessInstance instance = null;
 
@@ -176,30 +176,30 @@ public class jBPMRules {
 			kSession.addEventListener(new TriggerRulesEventListener(kSession));
 		}
 
-		Devices device = this.devices.getDevice(serverEvent.getId());
-		if (device == null) {
-			System.out.println("> id " + serverEvent.search("id") + " : Extended IoT Device ID");
+//		Devices device = this.devices.getDevice(deviceEvent.getId());
+/*		if (device == null) {
+			System.out.println("> id " + deviceEvent.search("id") + " : Extended IoT Device ID");
 		} else {
-			if (serverEvent.search("name").equals("")) {
-				serverEvent.add("name", device.getName());
+			if (deviceEvent.search("name").equals("")) {
+				deviceEvent.add("name", device.getName());
 			}
-			if (serverEvent.search("event").equals("")) {
-				if (serverEvent.search("keypress").equals("")) {
-					serverEvent.add("event", "none");
+			if (deviceEvent.search("event").equals("")) {
+				if (deviceEvent.search("keypress").equals("")) {
+					deviceEvent.add("event", "none");
 				} else {
-					serverEvent.add("event", "keypress" + serverEvent.search("keypress"));
+					deviceEvent.add("event", "keypress" + deviceEvent.search("keypress"));
 				}
 			}
 		}
 
 		if (knowledgeDebug.indexOf("none") == -1) {
-			System.out.println("> TRACE " + serverEvent.getDeviceTime() + " id " + device.getId() + "-"
-					+ serverEvent.getName() + " event " + serverEvent.getEvent());
-		}
-		for (Devices devices : this.devices.getDevices()) {
-			kSession.insert(devices);
-		}
-		kSession.insert(serverEvent);
+			System.out.println("> TRACE " + deviceEvent.getDeviceTime() + " id " + device.getId() + "-"
+					+ deviceEvent.getName() + " event " + deviceEvent.getEvent());
+		} */
+//		for (Devices devices : this.devices.getDevices()) {
+//			kSession.insert(devices);
+//		}
+		kSession.insert(deviceEvent);
 
 		try {
 			// go! - fire rules
@@ -211,11 +211,11 @@ public class jBPMRules {
 //			if (device != null) {
 //				MainWindow.getInstance().updateDevice(device.getId());
 //			}
-//			MainWindow.getInstance().updateEvent(serverEvent);
+//			MainWindow.getInstance().updateEvent(deviceEvent);
 
 			Map<String, Object> params = new HashMap<String, Object>();
-			for (String key : serverEvent.map.keySet()) {
-				params.put(key, serverEvent.map.get(key));
+			for (String key : deviceEvent.map.keySet()) {
+				params.put(key, deviceEvent.map.get(key));
 			}
 
 			Map<String, Object> state = stateList.mapState();
@@ -266,7 +266,7 @@ public class jBPMRules {
 		return (response);
 	}
 
-	public void log(String message) {
+//	public void log(String message) {
 //		MainWindow.getInstance().log(message);
-	}
+//	}
 }

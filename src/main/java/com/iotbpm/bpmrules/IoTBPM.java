@@ -18,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.iotbpm.model.AgentsList;
-import com.iotbpm.model.DevicesList;
 import com.iotbpm.model.StateList;
 import com.iotbpm.server.AgentConnect;
 import com.iotbpm.server.IoTServer;
@@ -93,7 +92,7 @@ public class IoTBPM {
 	public void init(final boolean exitOnClose) {
 		// set up and show main window
 		Locale.setDefault(Locale.US);
-		final DevicesList devices = new DevicesList();
+//		final DevicesList devices = new DevicesList();
 
 //		EventQueue.invokeLater(new Runnable() {
 //			@Override
@@ -126,8 +125,8 @@ public class IoTBPM {
 
 		StateList stateList = new StateList();
 
-		final jBPMRules jbpmRules = new jBPMRules(devices, kSessionType, kSessionName, processID, stateList,
-				knowledgeDebug);
+		final jBPMRules jbpmRules = new jBPMRules(kSessionType, kSessionName, processID, stateList,
+				knowledgeDebug); // devices, 
 
 		startIoTServer(jbpmRules);
 

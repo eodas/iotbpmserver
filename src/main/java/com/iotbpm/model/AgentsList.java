@@ -13,8 +13,6 @@ public class AgentsList {
 
 	private Hashtable<String, String> agents = new Hashtable<String, String>();
 
-	private final Logger logger = LoggerFactory.getLogger(DevicesList.class);
-
 	public AgentsList() {
 	}
 

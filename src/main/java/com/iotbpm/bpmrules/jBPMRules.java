@@ -37,9 +37,7 @@ import com.iotbpm.util.WorkingMemoryListener;
  * The Arduino Tron AI-IoTBPM Drools-jBPM application
  */
 public class jBPMRules {
-
 	private StateList stateList;
-//	private DevicesList devices;
 	private KieSession kSession;
 	private KieContainer kContainer;
 	private RuntimeManager manager;
@@ -55,10 +53,9 @@ public class jBPMRules {
 
 	private final Logger logger = LoggerFactory.getLogger(jBPMRules.class);
 
-	public jBPMRules(String kSessionType, String kSessionName, String processID,
-			StateList stateList, String knowledgeDebug) { // DevicesList devices, 
+	public jBPMRules(String kSessionType, String kSessionName, String processID, StateList stateList,
+			String knowledgeDebug) { // DevicesList devices,
 		super();
-//		this.devices = devices;
 		this.knowledgeDebug = knowledgeDebug;
 		this.kSessionType = kSessionType;
 		this.kSessionName = kSessionName;
@@ -176,29 +173,6 @@ public class jBPMRules {
 			kSession.addEventListener(new TriggerRulesEventListener(kSession));
 		}
 
-//		Devices device = this.devices.getDevice(deviceEvent.getId());
-/*		if (device == null) {
-			System.out.println("> id " + deviceEvent.search("id") + " : Extended IoT Device ID");
-		} else {
-			if (deviceEvent.search("name").equals("")) {
-				deviceEvent.add("name", device.getName());
-			}
-			if (deviceEvent.search("event").equals("")) {
-				if (deviceEvent.search("keypress").equals("")) {
-					deviceEvent.add("event", "none");
-				} else {
-					deviceEvent.add("event", "keypress" + deviceEvent.search("keypress"));
-				}
-			}
-		}
-
-		if (knowledgeDebug.indexOf("none") == -1) {
-			System.out.println("> TRACE " + deviceEvent.getDeviceTime() + " id " + device.getId() + "-"
-					+ deviceEvent.getName() + " event " + deviceEvent.getEvent());
-		} */
-//		for (Devices devices : this.devices.getDevices()) {
-//			kSession.insert(devices);
-//		}
 		kSession.insert(deviceEvent);
 
 		try {
@@ -208,10 +182,6 @@ public class jBPMRules {
 				System.out.println("> TRACE kSession no of Rules Fired: " + noOfRulesFired);
 				System.out.println("> TRACE Number of facts in the session: " + kSession.getFactCount());
 			}
-//			if (device != null) {
-//				MainWindow.getInstance().updateDevice(device.getId());
-//			}
-//			MainWindow.getInstance().updateEvent(deviceEvent);
 
 			Map<String, Object> params = new HashMap<String, Object>();
 			for (String key : deviceEvent.map.keySet()) {
@@ -265,8 +235,4 @@ public class jBPMRules {
 		}
 		return (response);
 	}
-
-//	public void log(String message) {
-//		MainWindow.getInstance().log(message);
-//	}
 }

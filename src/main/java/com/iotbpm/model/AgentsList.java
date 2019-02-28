@@ -3,9 +3,6 @@ package com.iotbpm.model;
 import java.util.Hashtable;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * A helper class to load and return the list of agents
  */

@@ -90,25 +90,6 @@ public class IoTBPM {
 	}
 
 	public void init(final boolean exitOnClose) {
-		// set up and show main window
-		Locale.setDefault(Locale.US);
-//		final DevicesList devices = new DevicesList();
-
-//		EventQueue.invokeLater(new Runnable() {
-//			@Override
-//			public void run() {
-//				try {
-//					MainWindow mainWindow = new MainWindow(devices.getDevices(), exitOnClose);
-//					if (iotTilesWindow.indexOf("active") != -1) {
-//						mainWindow.showMove();
-//					}
-//					mainWindow.show(); // .setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-
 		AgentConnect agentConnect = new AgentConnect(agentsList, knowledgeDebug);
 
 		if (kSessionType == "") {
@@ -125,28 +106,11 @@ public class IoTBPM {
 
 		StateList stateList = new StateList();
 
-		final jBPMRules jbpmRules = new jBPMRules(kSessionType, kSessionName, processID, stateList,
-				knowledgeDebug); // devices, 
+		final jBPMRules jbpmRules = new jBPMRules(kSessionType, kSessionName, processID, stateList, knowledgeDebug); // devices,
 
 		startIoTServer(jbpmRules);
 
 		processConsole();
-
-//		if (iotTilesWindow.indexOf("active") != -1) {
-//			EventQueue.invokeLater(new Runnable() {
-//				@Override
-//				public void run() {
-//					try {
-//						IoTEvents iotEvents = new IoTEvents(jbpmRules);
-//						IoTTiles iotTiles = new IoTTiles(iotEvents, exitOnClose);
-//						// iotTiles.show(); // .setVisible(true);
-//						iotTiles.show(); // setVisible(true);
-//					} catch (Exception e) {
-//						e.printStackTrace();
-//					}
-//				}
-//			});
-//		}
 	}
 
 	// Process server commands from the console
@@ -217,9 +181,6 @@ public class IoTBPM {
 				if (key.indexOf("arduinoAgent") != -1) {
 					agentsList.parseAgents(value);
 				}
-//				if (key.indexOf("iotTilesWindow") != -1) {
-//					iotTilesWindow = value;
-//				}
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

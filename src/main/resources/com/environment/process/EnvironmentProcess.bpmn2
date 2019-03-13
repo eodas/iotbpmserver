@@ -35,10 +35,10 @@
       <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
       <bpmn2:outgoing>SequenceFlow_4</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
-    <bpmn2:scriptTask id="ScriptTask_2" name="No Temperature">
+    <bpmn2:scriptTask id="ScriptTask_2" name="Manual Control">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
-          <tns:metaValue><![CDATA[No Temperature]]></tns:metaValue>
+          <tns:metaValue><![CDATA[Manual Control]]></tns:metaValue>
         </tns:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
@@ -59,16 +59,16 @@
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="ScriptTask_1"/>
     <bpmn2:sequenceFlow id="SequenceFlow_2" sourceRef="ScriptTask_1" targetRef="ExclusiveGateway_1"/>
-    <bpmn2:sequenceFlow id="SequenceFlow_3" name="No Temperature" sourceRef="ExclusiveGateway_1" targetRef="ScriptTask_2">
+    <bpmn2:sequenceFlow id="SequenceFlow_3" name="Manual Switch" sourceRef="ExclusiveGateway_1" targetRef="ScriptTask_2">
       <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_1" language="http://www.java.com/java">return  KieFunctions.equalsTo(temp, &quot;0&quot;);</bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="SequenceFlow_4" tns:priority="2" name="Temperature Reading" sourceRef="ExclusiveGateway_1" targetRef="ScriptTask_3"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_4" tns:priority="2" name="Temperature Sensor" sourceRef="ExclusiveGateway_1" targetRef="ScriptTask_3"/>
     <bpmn2:sequenceFlow id="SequenceFlow_7" tns:priority="1" sourceRef="ScriptTask_2" targetRef="InclusiveGateway_1"/>
     <bpmn2:sequenceFlow id="SequenceFlow_8" tns:priority="1" sourceRef="ScriptTask_3" targetRef="InclusiveGateway_1"/>
-    <bpmn2:scriptTask id="ScriptTask_4" name="Location Temp">
+    <bpmn2:scriptTask id="ScriptTask_4" name="Fan Motor">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
-          <tns:metaValue><![CDATA[Location Temp]]></tns:metaValue>
+          <tns:metaValue><![CDATA[Fan Motor]]></tns:metaValue>
         </tns:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
@@ -97,8 +97,8 @@
       <bpmn2:outgoing>SequenceFlow_5</bpmn2:outgoing>
     </bpmn2:inclusiveGateway>
     <bpmn2:textAnnotation id="TextAnnotation_1">
-      <bpmn2:text>- If the IoT device is not transmitting the Temp, then it is an Android Phone.&#xD;
-&#xD;- If the IoT device is transmitting the Temp, then it is a TI-SensorTag or Arduino_Tron device with an DHT11 digital ambient temperature and humidity sensor.&#xD;&#xD;
+      <bpmn2:text>- Pushbutton Switch - an IoT device transmitting a HTTP on/off command to the IoTBPM Server.
+&#xD;- Temp Sensor - an IoT device transmitting a DHT11 digital ambient temperature and humidity sensor.&#xD;&#xD;
 </bpmn2:text>
     </bpmn2:textAnnotation>
   </bpmn2:process>
@@ -125,7 +125,7 @@
       <bpmndi:BPMNShape id="BPMNShape_ScriptTask_3" bpmnElement="ScriptTask_2" isExpanded="true">
         <dc:Bounds height="50.0" width="110.0" x="360.0" y="89.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_4" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="15.0" width="90.0" x="370.0" y="106.0"/>
+          <dc:Bounds height="15.0" width="83.0" x="373.0" y="106.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_ScriptTask_4" bpmnElement="ScriptTask_3" isExpanded="true">
@@ -137,7 +137,7 @@
       <bpmndi:BPMNShape id="BPMNShape_ScriptTask_1" bpmnElement="ScriptTask_4" isExpanded="true">
         <dc:Bounds height="50.0" width="110.0" x="580.0" y="89.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_7">
-          <dc:Bounds height="15.0" width="82.0" x="594.0" y="106.0"/>
+          <dc:Bounds height="15.0" width="54.0" x="608.0" y="106.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_EndEvent_1" bpmnElement="EndEvent_1">
@@ -147,9 +147,9 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_TextAnnotation_1" bpmnElement="TextAnnotation_1">
-        <dc:Bounds height="74.0" width="481.0" x="10.0" y="177.0"/>
+        <dc:Bounds height="74.0" width="591.0" x="10.0" y="177.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_9">
-          <dc:Bounds height="68.0" width="469.0" x="16.0" y="177.0"/>
+          <dc:Bounds height="68.0" width="579.0" x="16.0" y="177.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_InclusiveGateway_1" bpmnElement="InclusiveGateway_1" isMarkerVisible="true">
@@ -175,7 +175,7 @@
         <di:waypoint xsi:type="dc:Point" x="313.0" y="114.0"/>
         <di:waypoint xsi:type="dc:Point" x="360.0" y="114.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_10">
-          <dc:Bounds height="30.0" width="71.0" x="278.0" y="115.0"/>
+          <dc:Bounds height="15.0" width="79.0" x="274.0" y="115.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_6" bpmnElement="SequenceFlow_4" sourceElement="BPMNShape_ExclusiveGateway_1" targetElement="BPMNShape_ScriptTask_4">

@@ -20,20 +20,20 @@
       </bpmn2:extensionElements>
       <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
     </bpmn2:startEvent>
-    <bpmn2:scriptTask id="ScriptTask_1" name="Prepare Facts">
+    <bpmn2:scriptTask id="ScriptTask_1" name="Temperature-Humidity Sensor">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
-          <tns:metaValue><![CDATA[Prepare Facts]]></tns:metaValue>
+          <tns:metaValue><![CDATA[Temperature-Humidity Sensor]]></tns:metaValue>
         </tns:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
       <bpmn2:script>kcontext.getKnowledgeRuntime().insert(kcontext.getProcessInstance());</bpmn2:script>
     </bpmn2:scriptTask>
-    <bpmn2:scriptTask id="ScriptTask_2" name="Temperature-Humidity">
+    <bpmn2:scriptTask id="ScriptTask_2" name="Air Cooling Unit">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
-          <tns:metaValue><![CDATA[Temperature-Humidity]]></tns:metaValue>
+          <tns:metaValue><![CDATA[Air Cooling Unit]]></tns:metaValue>
         </tns:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
@@ -45,15 +45,29 @@ com.iotbpm.iottiles.IoTTiles.getInstance().panel_5Temp(kcontext.getVariable(&quo
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="ScriptTask_1"/>
     <bpmn2:sequenceFlow id="SequenceFlow_2" sourceRef="ScriptTask_1" targetRef="ScriptTask_2"/>
-    <bpmn2:sequenceFlow id="SequenceFlow_7" tns:priority="1" sourceRef="ScriptTask_2" targetRef="EndEvent_1"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_7" tns:priority="1" sourceRef="ScriptTask_2" targetRef="ScriptTask_3"/>
     <bpmn2:endEvent id="EndEvent_1" name="End Event">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
           <tns:metaValue><![CDATA[End Event]]></tns:metaValue>
         </tns:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>SequenceFlow_7</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
     </bpmn2:endEvent>
+    <bpmn2:scriptTask id="ScriptTask_3" name="Notify Maintanance">
+      <bpmn2:extensionElements>
+        <tns:metaData name="elementname">
+          <tns:metaValue><![CDATA[Air Cooling Unit]]></tns:metaValue>
+        </tns:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_7</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
+      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; Temperature &quot; + kcontext.getVariable(&quot;temp&quot;) + &quot;' Humidity &quot; + kcontext.getVariable(&quot;humidity&quot;) + &quot;%&quot;);
+com.iotbpm.server.AgentConnect.getInstance().sendTronIoT(&quot;TronIoT&quot;,&quot;&amp;temp=&quot;+kcontext.getVariable(&quot;temp&quot;)+&quot;&amp;humidity=&quot;+kcontext.getVariable(&quot;humidity&quot;)+&quot;&amp;&quot;);
+com.iotbpm.iottiles.IoTTiles.getInstance().panel_5Temp(kcontext.getVariable(&quot;temp&quot;)+&quot;' &quot;+kcontext.getVariable(&quot;humidity&quot;)+&quot;%&quot;);
+</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_3" tns:priority="1" sourceRef="ScriptTask_3" targetRef="EndEvent_1"/>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="com.Temperature">
@@ -66,19 +80,25 @@ com.iotbpm.iottiles.IoTTiles.getInstance().panel_5Temp(kcontext.getVariable(&quo
       <bpmndi:BPMNShape id="BPMNShape_ScriptTask_2" bpmnElement="ScriptTask_1" isExpanded="true">
         <dc:Bounds height="50.0" width="110.0" x="120.0" y="113.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_2" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="15.0" width="77.0" x="136.0" y="130.0"/>
+          <dc:Bounds height="30.0" width="94.0" x="128.0" y="123.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_ScriptTask_3" bpmnElement="ScriptTask_2" isExpanded="true">
         <dc:Bounds height="50.0" width="119.0" x="282.0" y="113.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_4" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="30.0" width="77.0" x="303.0" y="123.0"/>
+          <dc:Bounds height="15.0" width="85.0" x="299.0" y="130.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_EndEvent_1" bpmnElement="EndEvent_1">
-        <dc:Bounds height="36.0" width="36.0" x="452.0" y="120.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="617.0" y="120.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_6">
-          <dc:Bounds height="15.0" width="55.0" x="443.0" y="156.0"/>
+          <dc:Bounds height="15.0" width="55.0" x="608.0" y="156.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_1" bpmnElement="ScriptTask_3" isExpanded="true">
+        <dc:Bounds height="50.0" width="119.0" x="440.0" y="113.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="15.0" width="103.0" x="448.0" y="130.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_StartEvent_2" targetElement="BPMNShape_ScriptTask_2">
@@ -93,11 +113,17 @@ com.iotbpm.iottiles.IoTTiles.getInstance().panel_5Temp(kcontext.getVariable(&quo
         <di:waypoint xsi:type="dc:Point" x="282.0" y="138.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_9"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="SequenceFlow_7" sourceElement="BPMNShape_ScriptTask_3" targetElement="BPMNShape_EndEvent_1">
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="SequenceFlow_7" sourceElement="BPMNShape_ScriptTask_3" targetElement="BPMNShape_ScriptTask_1">
         <di:waypoint xsi:type="dc:Point" x="401.0" y="138.0"/>
-        <di:waypoint xsi:type="dc:Point" x="426.0" y="138.0"/>
-        <di:waypoint xsi:type="dc:Point" x="452.0" y="138.0"/>
+        <di:waypoint xsi:type="dc:Point" x="420.0" y="138.0"/>
+        <di:waypoint xsi:type="dc:Point" x="440.0" y="138.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_12"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_3" sourceElement="BPMNShape_ScriptTask_1" targetElement="BPMNShape_EndEvent_1">
+        <di:waypoint xsi:type="dc:Point" x="559.0" y="138.0"/>
+        <di:waypoint xsi:type="dc:Point" x="588.0" y="138.0"/>
+        <di:waypoint xsi:type="dc:Point" x="617.0" y="138.0"/>
+        <bpmndi:BPMNLabel/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
     <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">

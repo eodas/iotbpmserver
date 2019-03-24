@@ -39,7 +39,7 @@
       <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
       <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; Temperature &quot; + kcontext.getVariable(&quot;temp&quot;) + &quot;' Humidity &quot; + kcontext.getVariable(&quot;humidity&quot;) + &quot;%&quot;);
-com.iotbpm.server.AgentConnect.getInstance().sendTronIoT(&quot;TronIoT&quot;,&quot;&amp;temp=&quot;+kcontext.getVariable(&quot;temp&quot;)+&quot;&amp;humidity=&quot;+kcontext.getVariable(&quot;humidity&quot;)+&quot;&amp;&quot;);
+com.iotbpm.server.AgentConnect.getInstance().sendPost(&quot;TronIoT&quot;,&quot;&amp;temp=&quot;+kcontext.getVariable(&quot;temp&quot;)+&quot;&amp;humidity=&quot;+kcontext.getVariable(&quot;humidity&quot;)+&quot;&amp;&quot;);
 com.iotbpm.iottiles.IoTTiles.getInstance().panel_5Temp(kcontext.getVariable(&quot;temp&quot;)+&quot;' &quot;+kcontext.getVariable(&quot;humidity&quot;)+&quot;%&quot;);
 </bpmn2:script>
     </bpmn2:scriptTask>
@@ -57,13 +57,13 @@ com.iotbpm.iottiles.IoTTiles.getInstance().panel_5Temp(kcontext.getVariable(&quo
     <bpmn2:scriptTask id="ScriptTask_3" name="Notify Maintanance">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
-          <tns:metaValue><![CDATA[Air Cooling Unit]]></tns:metaValue>
+          <tns:metaValue><![CDATA[Notify Maintanance]]></tns:metaValue>
         </tns:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_7</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
       <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; Temperature &quot; + kcontext.getVariable(&quot;temp&quot;) + &quot;' Humidity &quot; + kcontext.getVariable(&quot;humidity&quot;) + &quot;%&quot;);
-com.iotbpm.server.AgentConnect.getInstance().sendTronIoT(&quot;TronIoT&quot;,&quot;&amp;temp=&quot;+kcontext.getVariable(&quot;temp&quot;)+&quot;&amp;humidity=&quot;+kcontext.getVariable(&quot;humidity&quot;)+&quot;&amp;&quot;);
+com.iotbpm.server.AgentConnect.getInstance().sendPost(&quot;TronIoT&quot;,&quot;&amp;temp=&quot;+kcontext.getVariable(&quot;temp&quot;)+&quot;&amp;humidity=&quot;+kcontext.getVariable(&quot;humidity&quot;)+&quot;&amp;&quot;);
 com.iotbpm.iottiles.IoTTiles.getInstance().panel_5Temp(kcontext.getVariable(&quot;temp&quot;)+&quot;' &quot;+kcontext.getVariable(&quot;humidity&quot;)+&quot;%&quot;);
 </bpmn2:script>
     </bpmn2:scriptTask>
@@ -97,7 +97,7 @@ com.iotbpm.iottiles.IoTTiles.getInstance().panel_5Temp(kcontext.getVariable(&quo
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_ScriptTask_1" bpmnElement="ScriptTask_3" isExpanded="true">
         <dc:Bounds height="50.0" width="119.0" x="440.0" y="113.0"/>
-        <bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel id="BPMNLabel_3">
           <dc:Bounds height="15.0" width="103.0" x="448.0" y="130.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
@@ -123,7 +123,7 @@ com.iotbpm.iottiles.IoTTiles.getInstance().panel_5Temp(kcontext.getVariable(&quo
         <di:waypoint xsi:type="dc:Point" x="559.0" y="138.0"/>
         <di:waypoint xsi:type="dc:Point" x="588.0" y="138.0"/>
         <di:waypoint xsi:type="dc:Point" x="617.0" y="138.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_5"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
     <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">

@@ -1,4 +1,4 @@
-package com.automation
+package com.iotcontrol
 
 // list import classes
 import com.iotbpm.model.StateList;
@@ -7,8 +7,28 @@ import com.iotbpm.model.DeviceEvent;
 // default dialect for the semantic code will be MVEL
 dialect "mvel"
 
-// 100111 - Arduino Tron IoT
+// Id 100222 - IoT Switch Fan On/Off
 
+rule "Rules for device ID: 100222 - Switch Fan On"
+ 	no-loop
+    when
+    	// event used to change update Switch Fan On
+    	$event : DeviceEvent( $eventId : id, $eventId == "100222", $switchEvent : event, $switchEvent == "on" )
+    then
+    	com.iotbpm.model.StateList.getInstance().putState("switch", "on");
+end
+
+rule "Rules for device ID: 100222 - Switch Fan Off"
+ 	no-loop
+    when
+    	// event used to change update Switch Fan Off
+    	$event : DeviceEvent( $eventId : id, $eventId == "100222", $switchEvent : event, $switchEvent == "off" )
+    then
+    	com.iotbpm.model.StateList.getInstance().putState("switch", "off");
+end
+
+
+/*
 rule "processID rule for device ID: 100222 - Temperature-Humidity"
 	when
 		$event : DeviceEvent( $eventId : id, $eventId == "100222" )
@@ -90,20 +110,6 @@ rule "processID rule for device ID: 100666 - Door Open Sensor ESP01"
 		com.iotbpm.model.StateList.getInstance().putState("processID", "com.DoorOpenSensor");
 end
 
-rule "Rules for device ID: 100666 - Door Open Sensor ESP01"
- 	no-loop
-    when
-    	// event used to change update Door Open Sensor ESP01
-		$event : DeviceEvent( $eventId : id, $eventId == "100666" )
-      	$device : Devices( $deviceId : id,  $eventId == id )
-    then
-		$device.status = "Opened";
-		$device.action = "Sensor";
-		com.iotbpm.ui.MainWindow.getInstance().log($device.getName());
-		modify( $device );
-		update( $device );
-end
-
 rule "processID rule for device ID: 100777 - Light Module IoT-MCU"
 	when
 		$event : DeviceEvent( $eventId : id, $eventId == "100777" )
@@ -147,4 +153,4 @@ rule "Rules for device ID: 100888 - Arduino Tron IoT Display - Temperature-Humid
 		modify( $device )
 		update( $device );
 end
-
+*/

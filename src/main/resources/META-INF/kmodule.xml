@@ -31,9 +31,9 @@
 		</ksession>
 	</kbase>
 
-	<kbase name="kbaseMovement"
-		packages="com.movement.rules, com.movement.process">
-		<ksession name="ksession-movement">
+	<kbase name="kbaseIoTControl"
+		packages="com.iotcontrol.rules, com.iotcontrol.process">
+		<ksession name="ksession-iotcontrol">
 		</ksession>
 	</kbase>
 </kmodule>

@@ -25,24 +25,24 @@ rule "temperature reading temp normal"
     	com.iotbpm.model.StateList.getInstance().putState("motor", "off");
 end
 
-//declare rules to switch fan on/off
-rule "rule for manual control switch fan on"
+//declare rules to switch fan motor on/off
+rule "rule for manual control switch fan motor on"
     when
-    	// event used to change update Switch Fan On
+    	// event used to change update switch fan motor on
     	$event : DeviceEvent( $eventId : id, $eventId == "100222", $switchEvent : event, $switchEvent == "on" )
     then
     	com.iotbpm.model.StateList.getInstance().putState("switch", "on");
     	com.iotbpm.model.StateList.getInstance().putState("motor", "on");
 end
 
-rule "rule for manual control switch fan off"
+rule "rule for manual control switch fan motor off"
     when
     	$event : DeviceEvent( $eventId : id, $eventId == "100222", $switchEvent : event, $switchEvent == "off" )
     then
     	com.iotbpm.model.StateList.getInstance().putState("switch", "off");
 end
 
-rule "rule to over ride manual control switch fan off"
+rule "rule to overrides manual control switch fan motor off"
     when
     	$temp : String() from com.iotbpm.model.StateList.getInstance().getState("dht11") 
      	$switch : String() from com.iotbpm.model.StateList.getInstance().getState("switch")

@@ -7,150 +7,47 @@ import com.iotbpm.model.DeviceEvent;
 // default dialect for the semantic code will be MVEL
 dialect "mvel"
 
-// Id 100222 - IoT Switch Fan On/Off
+//declare rule to fire when temp is over 73
+rule "temperature reading too warm"
+	when
+        $event : DeviceEvent( $eventId : id, $eventId == "100111", $temp : temp, $temp > "73" )
+	then
+    	com.iotbpm.model.StateList.getInstance().putState("dht11", "on");
+    	com.iotbpm.model.StateList.getInstance().putState("motor", "on");
+end
 
-rule "Rules for device ID: 100222 - Switch Fan On"
- 	no-loop
+//declare rule to fire when temp 73 or below
+rule "temperature reading temp normal"
+	when
+        $event : DeviceEvent( $eventId : id, $eventId == "100111", $temp : temp, $temp <= "73" )
+	then
+    	com.iotbpm.model.StateList.getInstance().putState("dht11", "off");
+    	com.iotbpm.model.StateList.getInstance().putState("motor", "off");
+end
+
+//declare rules to switch fan on/off
+rule "rule for manual control switch fan on"
     when
     	// event used to change update Switch Fan On
     	$event : DeviceEvent( $eventId : id, $eventId == "100222", $switchEvent : event, $switchEvent == "on" )
     then
     	com.iotbpm.model.StateList.getInstance().putState("switch", "on");
+    	com.iotbpm.model.StateList.getInstance().putState("motor", "on");
 end
 
-rule "Rules for device ID: 100222 - Switch Fan Off"
- 	no-loop
+rule "rule for manual control switch fan off"
     when
-    	// event used to change update Switch Fan Off
     	$event : DeviceEvent( $eventId : id, $eventId == "100222", $switchEvent : event, $switchEvent == "off" )
     then
     	com.iotbpm.model.StateList.getInstance().putState("switch", "off");
 end
 
-
-/*
-rule "processID rule for device ID: 100222 - Temperature-Humidity"
-	when
-		$event : DeviceEvent( $eventId : id, $eventId == "100222" )
-	then
-		com.iotbpm.model.StateList.getInstance().putState("processID", "com.Temperature");
-end
-
-rule "Rules for device ID: 100222 - Temperature-Humidity"
- 	no-loop
+rule "rule to over ride manual control switch fan off"
     when
-    	// event used to change update Temperature-Humidity
-		$event : DeviceEvent( $eventId : id, $eventId == "100222", $temp : temp, $humidity : humidity )
-       	$device : Devices( $deviceId : id, $eventId == id )
+    	$temp : String() from com.iotbpm.model.StateList.getInstance().getState("dht11") 
+     	$switch : String() from com.iotbpm.model.StateList.getInstance().getState("switch")
+        eval(($temp == "off") || ($temp == ""))
+        eval($switch == "off")
 	then
-		$device.action = "DHT11 Temp";
-		$device.status = "Temp " + $temp; 
-		String results = $event.getName() + " Temp:" + $temp + "  Humidity:" + $humidity;
-		com.iotbpm.ui.MainWindow.getInstance().log(results);
-		modify( $device )
-		update( $device );
-end
-
-rule "processID rule for device ID: 100223 - Temperature-Humidity"
-	when
-		$event : DeviceEvent( $eventId : id, $eventId == "100223" )
-	then
-		com.iotbpm.model.StateList.getInstance().putState("processID", "com.TemperatureOutside");
-end
-
-rule "processID rule for device ID: 100333 - Door Lock IoT-MCU"
-	when
-		$event : DeviceEvent( $eventId : id, $eventId == "100333" )
-	then
-		com.iotbpm.model.StateList.getInstance().putState("processID", "com.DoorLock");
-end
-
-rule "Rules for device ID: 100333 - Door Lock IoT-MCU"
- 	no-loop
-    when
-    	// event used to change update Arduino Door Lock/Unlock IoT-MCU ESP01
-		$event : DeviceEvent( $eventId : id, $eventId == "100333" )
-      	$device : Devices( $deviceId : id,  $eventId == id )
-    then
-    	String result = (com.iotbpm.model.StateList.getInstance().getState("DoorLock") == "Locked") ? "Unlocked" : "Locked";
-    	$device.status = result;
-		$device.action = "Door Status";
-		com.iotbpm.ui.MainWindow.getInstance().log($device.getName() + " " + result);
-		modify( $device );
-		update( $device );
-end
-
-// 100444 - Arduino IoT-SensorTag
-
-rule "processID rule for device ID: 100555 - Arduino Dash Button"
-	when
-		$event : DeviceEvent( $eventId : id, $eventId == "100555" )
-	then
-		com.iotbpm.model.StateList.getInstance().putState("processID", "com.IoTDashButton");
-end
-
-rule "Rules for device ID: 100555 - Arduino Dash Button"
- 	no-loop
-    when
-    	// event used to change update Arduino Dash Button ESP01
-    	$event : DeviceEvent( $eventId : id, $eventId == "100555", $alarm : alarm )
-      	$device : Devices( $deviceId : id,  $eventId == id )
-    then
-		$device.status = $alarm;
-		$device.action = "Dash Button";
-		com.iotbpm.ui.MainWindow.getInstance().log($device.getName());
-		modify( $device );
-		update( $device );
-end
-
-rule "processID rule for device ID: 100666 - Door Open Sensor ESP01"
-	when
-		$event : DeviceEvent( $eventId : id, $eventId == "100666" )
-	then
-		com.iotbpm.model.StateList.getInstance().putState("processID", "com.DoorOpenSensor");
-end
-
-rule "processID rule for device ID: 100777 - Light Module IoT-MCU"
-	when
-		$event : DeviceEvent( $eventId : id, $eventId == "100777" )
-	then
-		com.iotbpm.model.StateList.getInstance().putState("processID", "com.LightModule");
-end
-
-rule "Rules for device ID: 100777 - Light Module IoT-MCU"
- 	no-loop
-    when
-    	// event used to change update Arduino Light Module IoT-MCU ESP01
-		$event : DeviceEvent( $eventId : id, $eventId == "100777" )
-      	$device : Devices( $deviceId : id,  $eventId == id )
-    then
-    	String result = (com.iotbpm.model.StateList.getInstance().getState("LightModule") == "On") ? "Off" : "On";
-    	$device.status = result;
-		$device.action = "Light Module";
-		com.iotbpm.ui.MainWindow.getInstance().log($device.getName() + " " + result);
-		modify( $device );
-		update( $device );
-end
-
-rule "processID rule for device ID: 100888 - Arduino Tron IoT Display"
-	when
-		$event : DeviceEvent( $eventId : id, $eventId == "100888" )
-	then
-		com.iotbpm.model.StateList.getInstance().putState("processID", "com.TronIoTDisplay");
-end
-
-rule "Rules for device ID: 100888 - Arduino Tron IoT Display - Temperature-Humidity"
- 	no-loop
-    when
-    	// event used to change update Temperature-Humidity
-		$event : DeviceEvent( $eventId : id, $eventId == "100888", $temp : temp, $humidity : humidity )
-       	$device : Devices( $deviceId : id, $eventId == id )
-	then
-		$device.action = "Tron IoT";
-		$device.status = "Temp " + $temp; 
-		String results = $event.getName() + " Temp:" + $temp + "  Humidity:" + $humidity;
-		com.iotbpm.ui.MainWindow.getInstance().log(results);
-		modify( $device )
-		update( $device );
-end
-*/
+    	com.iotbpm.model.StateList.getInstance().putState("motor", "off");
+end	

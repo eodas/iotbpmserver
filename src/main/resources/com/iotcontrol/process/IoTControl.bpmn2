@@ -43,10 +43,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
-      <bpmn2:script>//com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName());
-System.out.println(&quot;Switch &quot; +  kcontext.getVariable(&quot;switch&quot;) );
-//&quot;IoT &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName());
-</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;Manual Control &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName()   + &quot; &quot; +  kcontext.getVariable(&quot;switch&quot;) );</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:scriptTask id="ScriptTask_3" name="Temperature Reading">
       <bpmn2:extensionElements>
@@ -56,10 +53,7 @@ System.out.println(&quot;Switch &quot; +  kcontext.getVariable(&quot;switch&quot
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_4</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
-      <bpmn2:script>//com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName() +  &quot; is &quot; + kcontext.getVariable(&quot;temp&quot;));
-System.out.println(&quot;Temp Reading&quot;);
-//IoT &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName() +  &quot; is &quot; + kcontext.getVariable(&quot;temp&quot;));
-</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT Temperature Reading &quot; +  kcontext.getVariable(&quot;alarm&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName() +  &quot; is &quot; + kcontext.getVariable(&quot;temp&quot;));</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="ScriptTask_1"/>
     <bpmn2:sequenceFlow id="SequenceFlow_2" sourceRef="ScriptTask_1" targetRef="ExclusiveGateway_1"/>
@@ -77,10 +71,7 @@ System.out.println(&quot;Temp Reading&quot;);
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_6</bpmn2:outgoing>
-      <bpmn2:script>//if (kcontext.getVariable(&quot;temp&quot;) != &quot;0.0&quot;) {
-//	com.iotbpm.ui.MainWindow.getInstance().log(&quot;Currently &quot; + kcontext.getVariable(&quot;temp&quot;) + &quot; at &quot; +  kcontext.getVariable(&quot;address&quot;));
-//}
-System.out.println(&quot;Fan&quot;);
+      <bpmn2:script>System.out.println(&quot;>>> Fan Motor is &lt;&quot; +  kcontext.getVariable(&quot;motor&quot;) + &quot;>&quot;);
 
 </bpmn2:script>
     </bpmn2:scriptTask>
@@ -101,9 +92,8 @@ System.out.println(&quot;Fan&quot;);
       <bpmn2:outgoing>SequenceFlow_5</bpmn2:outgoing>
     </bpmn2:inclusiveGateway>
     <bpmn2:textAnnotation id="TextAnnotation_1">
-      <bpmn2:text>&#xD;- Temperature Sensor - an IoT device transmitting a DHT11 digital ambient temperature and humidity Sensor Reading.
-&#xD;&#xD;
-- Pushbutton Switch - an IoT device transmitting a HTTP Fan Motor On / Off Command to the IoTBPM Server.
+      <bpmn2:text>&#xD;- Temperature Sensor - an IoT device transmitting a DHT11 digital ambient temperature and humidity Sensor Reading.&#xD;
+- Pushbutton Switch - an IoT device transmitting a HTTP Fan Motor On / Off Command to the IoTBPM Server.&#xD;
 </bpmn2:text>
     </bpmn2:textAnnotation>
   </bpmn2:process>
@@ -152,9 +142,9 @@ System.out.println(&quot;Fan&quot;);
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_TextAnnotation_1" bpmnElement="TextAnnotation_1">
-        <dc:Bounds height="94.0" width="721.0" x="10.0" y="177.0"/>
+        <dc:Bounds height="55.0" width="721.0" x="10.0" y="176.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_9">
-          <dc:Bounds height="88.0" width="709.0" x="16.0" y="177.0"/>
+          <dc:Bounds height="49.0" width="709.0" x="16.0" y="176.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_InclusiveGateway_1" bpmnElement="InclusiveGateway_1" isMarkerVisible="true">

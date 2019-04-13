@@ -32,7 +32,7 @@
 	</kbase>
 
 	<kbase name="kbaseIoTControl"
-		packages="com.iotcontrol.rules, com.iotcontrol.process">
+		packages="com_iotcontrol, com.iotcontrol.process">
 		<ksession name="ksession-iotcontrol">
 		</ksession>
 	</kbase>

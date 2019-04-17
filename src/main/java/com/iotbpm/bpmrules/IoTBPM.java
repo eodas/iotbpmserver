@@ -50,8 +50,8 @@ public class IoTBPM {
 	private int port = 5055;
 	private String knowledgeDebug = "none"; // none, debug
 	private String kSessionType = ""; // createKieSession
-	private String kSessionName = ""; // ksession-movement
-	private String processID = ""; // com.TrainMovement
+	private String kSessionName = ""; // ksession-iotcontrol
+	private String processID = ""; // com.IoTControl
 	private long startTime = 0; // Time the server started
 
 	private final Logger logger = LoggerFactory.getLogger(IoTBPM.class);

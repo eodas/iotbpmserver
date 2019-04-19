@@ -20,7 +20,6 @@ import org.kie.api.runtime.manager.RuntimeManagerFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.jbpm.test.JBPMHelper;
 import org.jbpm.process.instance.event.listeners.RuleAwareProcessEventLister;
 import org.jbpm.process.instance.event.listeners.TriggerRulesEventListener;
 
@@ -102,8 +101,8 @@ public class jBPMRules {
 
 	private RuntimeManager getRuntimeManager(String process) {
 		// load up the knowledge base
-		JBPMHelper.startH2Server();
-		JBPMHelper.setupDataSource();
+		// JBPMHelper.startH2Server();
+		// JBPMHelper.setupDataSource();
 		environment = RuntimeEnvironmentBuilder.Factory.get().newDefaultBuilder()
 				.addAsset(KieServices.Factory.get().getResources().newClassPathResource(process), ResourceType.BPMN2)
 				.get();

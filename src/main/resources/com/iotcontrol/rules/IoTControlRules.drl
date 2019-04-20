@@ -51,3 +51,13 @@ rule "rule to overrides manual control switch fan motor off"
 	then
     	com.iotbpm.model.StateList.getInstance().putState("motor", "off");
 end	
+
+rule "rule to overrides manual control switch fan motor off message"
+    when
+    	$temp : String() from com.iotbpm.model.StateList.getInstance().getState("dht11") 
+     	$switch : String() from com.iotbpm.model.StateList.getInstance().getState("switch")
+        eval($temp == "on")
+        eval($switch == "off")
+	then
+		System.out.println(">>> Override manual control switch fan motor Off <<<");
+end	

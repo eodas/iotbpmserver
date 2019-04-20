@@ -2,7 +2,7 @@
 <!-- origin at X=0.0 Y=0.0 -->
 <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:java="http://www.java.com/javaTypes" xmlns:tns="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="Definition" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.0.Final-v20180515-1642-B1" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
   <bpmn2:itemDefinition id="ItemDefinition_19" isCollection="false" structureRef="java.lang.String"/>
-  <bpmn2:process id="com.IoTDashButton" tns:packageName="com.IoTDashButtonPackage" name="IoT Dash Button jBPM" isExecutable="true" processType="Private">
+  <bpmn2:process id="com.IoTAutomation2" tns:packageName="com.IoTAutomationPackage" name="IoT Automation jBPM" isExecutable="true" processType="Private">
     <bpmn2:property id="id" itemSubjectRef="ItemDefinition_19" name="id"/>
     <bpmn2:property id="name" itemSubjectRef="ItemDefinition_19" name="name"/>
     <bpmn2:property id="event" itemSubjectRef="ItemDefinition_19" name="event"/>
@@ -30,19 +30,15 @@
       <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
       <bpmn2:script>kcontext.getKnowledgeRuntime().insert(kcontext.getProcessInstance());</bpmn2:script>
     </bpmn2:scriptTask>
-    <bpmn2:scriptTask id="ScriptTask_2" name="Dash Button">
+    <bpmn2:scriptTask id="ScriptTask_2" name="IoT Automation">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
-          <tns:metaValue><![CDATA[Dash Button]]></tns:metaValue>
+          <tns:metaValue><![CDATA[IoT Automation]]></tns:metaValue>
         </tns:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;Arduino &quot; + kcontext.getVariable(&quot;alarm&quot;) + &quot; Dash Button &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName() +  &quot; ID &quot; + kcontext.getVariable(&quot;id&quot;) );
-com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT Dash Button &quot; + kcontext.getVariable(&quot;alarm&quot;)  + &quot; Sensors&quot;);
-
-com.iotbpm.iottiles.IoTTiles.getInstance().panel_15DashButtonAlert(kcontext.getVariable(&quot;alarm&quot;) );
-com.iotbpm.server.AgentConnect.getInstance().sendPost(&quot;DashButton&quot;,&quot;/CHIME&quot;);
+      <bpmn2:script>System.out.println(&quot;IoT Automation &lt;&lt;2>>&quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName() +  &quot; ID &quot; + kcontext.getVariable(&quot;id&quot;) );
 </bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="ScriptTask_1"/>
@@ -58,7 +54,7 @@ com.iotbpm.server.AgentConnect.getInstance().sendPost(&quot;DashButton&quot;,&qu
     </bpmn2:endEvent>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="com.IoTDashButton">
+    <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="com.IoTAutomation2">
       <bpmndi:BPMNShape id="BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds height="36.0" width="36.0" x="30.0" y="120.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_1" labelStyle="BPMNLabelStyle_1">
@@ -74,7 +70,7 @@ com.iotbpm.server.AgentConnect.getInstance().sendPost(&quot;DashButton&quot;,&qu
       <bpmndi:BPMNShape id="BPMNShape_ScriptTask_3" bpmnElement="ScriptTask_2" isExpanded="true">
         <dc:Bounds height="50.0" width="110.0" x="282.0" y="113.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_4" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="15.0" width="68.0" x="303.0" y="130.0"/>
+          <dc:Bounds height="15.0" width="82.0" x="296.0" y="130.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_EndEvent_1" bpmnElement="EndEvent_1">

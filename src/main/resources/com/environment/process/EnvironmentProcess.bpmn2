@@ -43,7 +43,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName());
+      <bpmn2:script>System.out.println(&quot;IoT &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName());
 </bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:scriptTask id="ScriptTask_3" name="Temperature Reading">
@@ -54,7 +54,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_4</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName() +  &quot; is &quot; + kcontext.getVariable(&quot;temp&quot;));
+      <bpmn2:script>System.out.println(&quot;IoT &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName() +  &quot; is &quot; + kcontext.getVariable(&quot;temp&quot;));
 </bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="ScriptTask_1"/>
@@ -74,7 +74,7 @@
       <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_6</bpmn2:outgoing>
       <bpmn2:script>if (kcontext.getVariable(&quot;temp&quot;) != &quot;0.0&quot;) {
-	com.iotbpm.ui.MainWindow.getInstance().log(&quot;Currently &quot; + kcontext.getVariable(&quot;temp&quot;) + &quot; at &quot; +  kcontext.getVariable(&quot;address&quot;));
+	System.out.println(&quot;Currently &quot; + kcontext.getVariable(&quot;temp&quot;) + &quot; at &quot; +  kcontext.getVariable(&quot;address&quot;));
 }
 
 

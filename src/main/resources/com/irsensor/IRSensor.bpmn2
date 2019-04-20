@@ -50,7 +50,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_27</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_5</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT IR Sensor Script Task EQ&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT IR Sensor Script Task EQ&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:scriptTask id="ScriptTask_11" name="Script Task Default">
       <bpmn2:extensionElements>
@@ -60,7 +60,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_26</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_4</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT IR Sensor  &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName() +  &quot; event &quot; + kcontext.getVariable(&quot;event&quot;));</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT IR Sensor  &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName() +  &quot; event &quot; + kcontext.getVariable(&quot;event&quot;));</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:scriptTask id="ScriptTask_12" name="Script Task MUTE">
       <bpmn2:extensionElements>
@@ -70,7 +70,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT IR Sensor Script Task MUTE&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT IR Sensor Script Task MUTE&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="SequenceFlow_5" tns:priority="1" sourceRef="ScriptTask_10" targetRef="EndEvent_1"/>
     <bpmn2:exclusiveGateway id="ExclusiveGateway_4" name="IR Keypress" gatewayDirection="Diverging" default="SequenceFlow_26">
@@ -107,7 +107,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_15</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT IR Sensor Script Task POWER&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT IR Sensor Script Task POWER&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:endEvent id="EndEvent_2" name="End POWER">
       <bpmn2:extensionElements>
@@ -127,7 +127,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_18</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_9</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT IR Sensor Script Task BACKWARD&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT IR Sensor Script Task BACKWARD&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:endEvent id="EndEvent_3" name="End BACKWARD">
       <bpmn2:extensionElements>
@@ -147,7 +147,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_23</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_10</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT IR Sensor Script Task UP&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT IR Sensor Script Task UP&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:endEvent id="EndEvent_4" name="End UP">
       <bpmn2:extensionElements>
@@ -167,7 +167,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_19</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_11</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT IR Sensor Script Task PLAY&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT IR Sensor Script Task PLAY&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:endEvent id="EndEvent_7" name="End PLAY">
       <bpmn2:extensionElements>
@@ -187,7 +187,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_16</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_12</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT IR Sensor Script Task MODE&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT IR Sensor Script Task MODE&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:endEvent id="EndEvent_8" name="End MODE">
       <bpmn2:extensionElements>
@@ -207,7 +207,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_17</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_13</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT IR Sensor Script Task FORWARD&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT IR Sensor Script Task FORWARD&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:endEvent id="EndEvent_9" name="End FORWARD">
       <bpmn2:extensionElements>
@@ -227,7 +227,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_22</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_14</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT IR Sensor Script Task DOWN&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT IR Sensor Script Task DOWN&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:endEvent id="EndEvent_10" name="End DOWN">
       <bpmn2:extensionElements>
@@ -262,7 +262,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_24</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_20</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT IR Sensor Script Task SWAP&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT IR Sensor Script Task SWAP&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:endEvent id="EndEvent_11" name="End SWAP">
       <bpmn2:extensionElements>
@@ -282,7 +282,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_25</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_21</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;IoT IR Sensor Script Task U/SD&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;IoT IR Sensor Script Task U/SD&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:endEvent id="EndEvent_12" name="End U/SD">
       <bpmn2:extensionElements>
@@ -326,7 +326,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_28</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;Immediate Script Task&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;Immediate Script Task&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_1" name="Intermediate Catch Event 5sec Delay">
       <bpmn2:extensionElements>
@@ -364,7 +364,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_29</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_30</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;Script Task 5 Sec Delay&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;Script Task 5 Sec Delay&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="SequenceFlow_2" tns:priority="1" sourceRef="ParallelGateway_1" targetRef="IntermediateCatchEvent_1"/>
     <bpmn2:sequenceFlow id="SequenceFlow_3" tns:priority="1" sourceRef="ParallelGateway_1" targetRef="ScriptTask_14"/>

@@ -43,7 +43,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
-      <bpmn2:script>com.iotbpm.ui.MainWindow.getInstance().log(&quot;GPS Device &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; event is allEvents&quot;);</bpmn2:script>
+      <bpmn2:script>System.ourt.println(&quot;GPS Device &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; event is allEvents&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:scriptTask id="ScriptTask_3" name="GPS Device has Street Address" scriptFormat="http://www.java.com/java">
       <bpmn2:extensionElements>
@@ -53,22 +53,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_4</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
-      <bpmn2:script>if (kcontext.getVariable(&quot;event&quot;).equals(&quot;keypress1.0&quot;)) {
-    com.iotbpm.ui.MainWindow.getInstance().log(&quot;GPS Device &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; event TYPE_KEYPRESS 1.0&quot;);
-}
-if (kcontext.getVariable(&quot;event&quot;).equals(&quot;keypress2.0&quot;)) {
-    com.iotbpm.ui.MainWindow.getInstance().log(&quot;GPS Device &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; event TYPE_KEYPRESS 2.0&quot;);
-}
-if (kcontext.getVariable(&quot;event&quot;).equals(&quot;keypress4.0&quot;)) {
-    com.iotbpm.ui.MainWindow.getInstance().log(&quot;GPS Device &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; event TYPE_REED_RELAY 4.0&quot;);
-}
-if (kcontext.getVariable(&quot;event&quot;).equals(&quot;keypress8.0&quot;)) {
-    com.iotbpm.ui.MainWindow.getInstance().log(&quot;GPS Device &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; event TYPE_PROXIMITY 8.0&quot;);
-}
-if (kcontext.getVariable(&quot;event&quot;).equals(&quot;keypress16.0&quot;)) {
-    com.iotbpm.ui.MainWindow.getInstance().log(&quot;GPS Device &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; event TYPE_ARDYINO_KEY 16.0&quot;);
-}
-</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;Device &quot; +  kcontext.getVariable(&quot;name&quot;) + &quot; &quot; + kcontext.getNodeInstance().getNodeName() +  &quot; event is &quot; + kcontext.getVariable(&quot;event&quot;));</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="ScriptTask_1"/>
     <bpmn2:sequenceFlow id="SequenceFlow_2" sourceRef="ScriptTask_1" targetRef="ExclusiveGateway_1"/>

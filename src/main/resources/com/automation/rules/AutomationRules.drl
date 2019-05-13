@@ -98,7 +98,8 @@ rule "Rules for device ID: 100777 - Light Module IoT-MCU"
 		$event : DeviceEvent( $eventId : id, $eventId == "100777" )
     then
     	String result = (com.iotbpm.model.StateList.getInstance().getState("LightModule") == "On") ? "Off" : "On";
-		System.out.println("Light Module > " + $event.getName() + " " + result);
+    	com.iotbpm.model.StateList.getInstance().putState("LightModule", result); 
+		System.out.println("Light Module > " + $event.getName() + " is " + result);
 end
 
 rule "processID rule for device ID: 100888 - Arduino Tron IoT Display"

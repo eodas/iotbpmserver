@@ -37,7 +37,6 @@ rule "processID rule for device ID: 100333 - Door Lock IoT-MCU"
 		$event : DeviceEvent( $eventId : id, $eventId == "100333" )
 	then
 		com.iotbpm.model.StateList.getInstance().putState("processID", "com.DoorLock");
-		System.out.println(">> 1");
 end
 
 rule "Rules for device ID: 100333 - Door Lock IoT-MCU"
@@ -49,7 +48,6 @@ rule "Rules for device ID: 100333 - Door Lock IoT-MCU"
     	String result = (com.iotbpm.model.StateList.getInstance().getState("DoorLock") == "Locked") ? "Unlocked" : "Locked";
 		com.iotbpm.model.StateList.getInstance().putState("DoorLock", result); 
 		System.out.println($event.getName() + " " + result);
-		System.out.println(">> 2");
 end
 
 // 100444 - Arduino IoT-SensorTag

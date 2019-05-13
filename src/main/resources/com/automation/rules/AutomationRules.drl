@@ -47,7 +47,7 @@ rule "Rules for device ID: 100333 - Door Lock IoT-MCU"
     then
     	String result = (com.iotbpm.model.StateList.getInstance().getState("DoorLock") == "Locked") ? "Unlocked" : "Locked";
 		com.iotbpm.model.StateList.getInstance().putState("DoorLock", result); 
-		System.out.println($event.getName() + " " + result);
+		System.out.println($event.getName() + " is " + result);
 end
 
 // 100444 - Arduino IoT-SensorTag

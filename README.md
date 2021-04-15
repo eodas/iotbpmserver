@@ -1,4 +1,4 @@
-# IoT BPM Server :: IoT BPM Server is a Business Process Management engine for IoT Device Orchestration.
+# IoT BPM Server :: IoT BPM Server is a Business Process Management engine for IoT Device Orchestration
 
 ![alt tag](http://IoTBPM.com/wp-content/uploads/2018/05/Arduino_Logotype-e1527283874261.png "Arduino Tron")
 

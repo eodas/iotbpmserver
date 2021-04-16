@@ -1,10 +1,10 @@
 # IoT BPM Server :: IoT BPM Server is a Business Process Management engine for IoT Device Orchestration
 
-![alt tag](http://IoTBPM.com/wp-content/uploads/2018/05/Arduino_Logotype-e1527283874261.png "Arduino Tron")
+![alt tag](http://iotbpm.com/wp-content/uploads/2018/03/preview-42-768x449.jpg "AI-IoTBPM")
 
-Executive Order Corp - Arduino Tron ESP8266 MQTT Telemetry Transport Machine-to-Machine(M2M) / Internet of Things (IoT)
-Arduino Tron :: Executive Order Arduino Tron Sensor Processor MQTT AI-IoTBPMServer Client using EOSpy AI-IoTBPMServer Drools-jBPM
-Arduino Tron AI-IoTBPMServer :: Internet of Things Drools-jBPM Artificial Intelligence (AI), Business Rule Management Systems (BRMS) DROOLS and Business Process Management (jBPM-Business Process Management)
+Executive Order Corp - AI-IoTBPM Tron ESP8266 MQTT Telemetry Transport Machine-to-Machine(M2M) / Internet of Things (IoT)
+AI-IoTBPM Tron :: Executive Order Arduino Tron Sensor Processor MQTT AI-IoTBPMServer Client using EOSpy AI-IoTBPMServer Drools-jBPM
+AI-IoTBPM Tron AI-IoTBPMServer :: Internet of Things Drools-jBPM Artificial Intelligence (AI), Business Rule Management Systems (BRMS) DROOLS and Business Process Management (jBPM-Business Process Management)
 
 The power of the IoT (Internet of Things) device increases greatly when business process (jBPM) can use them to provide information
 about our real-world as well as execute IoT devices as part of our business process. The jBPM-BPMN modular allow us to define 
@@ -13,7 +13,7 @@ we make the IoT devices "smart". Moving beyond just collecting IoT data and tran
 to improving the SMART decision making is the key. The Executive Order Arduino Tron AI-IoTBPMServer will help these IoT devices, environments, 
 and products to self-monitor, self-diagnose and eventually, self-direct.
 
-Arduino Tron allows you to send IoT sensor data and information directly to the AI-IoTBPMServer Drools-jBPM Expert System from the Arduino device.
+AI-IoTBPM Tron allows you to send IoT sensor data and information directly to the AI-IoTBPMServer Drools-jBPM Expert System from the Arduino device.
 This provides a very lite streamline IoT to Drools-jBPM (Business Process Management) application process with sensor and GPS positioning information.
 Executive Order Arduino Tron - This quick guide will help you install and configure the Arduino Tron - Executive Order Sensor Processor System components.
 

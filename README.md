@@ -1,10 +1,10 @@
-# IoT BPM Server :: IoT BPM Server is a Business Process Management engine for IoT Device Orchestration
+# AI-IoTBPM Server :: IoT BPM Server Internet of Things Drools-BPM (Business Process Management) engine for IoT Device Orchestration
 
 ![alt tag](http://iotbpm.com/wp-content/uploads/2018/03/preview-42-768x449.jpg "AI-IoTBPM")
 
-Executive Order Corp - AI-IoTBPM Tron ESP8266 MQTT Telemetry Transport Machine-to-Machine(M2M) / Internet of Things (IoT)
-AI-IoTBPM Tron :: Executive Order Arduino Tron Sensor Processor MQTT AI-IoTBPMServer Client using EOSpy AI-IoTBPMServer Drools-jBPM
-AI-IoTBPM Tron AI-IoTBPMServer :: Internet of Things Drools-jBPM Artificial Intelligence (AI), Business Rule Management Systems (BRMS) DROOLS and Business Process Management (jBPM-Business Process Management)
+Executive Order Corp – AI-IoTBPM Server is IoT Internet of Things Drools-BPM (Business Process Management) engine for IoT Device Orchestration and IoT device ontology (AI-IoT device awareness, state of being, knowledge of real-world objects, events, situations, and abstract concepts).
+Executive Order Corp - AI-IoTBPM MQTT Telemetry Transport Machine-to-Machine(M2M) / Internet of Things (IoT).
+AI-IoTBPM :: Executive Order AI-IoTBPM Tron Sensor Processor MQTT AI-IoTBPM Client using EOSpy AI-IoTBPM Drools-jBPM.
 
 The power of the IoT (Internet of Things) device increases greatly when business process (jBPM) can use them to provide information
 about our real-world as well as execute IoT devices as part of our business process. The jBPM-BPMN modular allow us to define 

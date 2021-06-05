@@ -73,12 +73,15 @@ public class IoTServerThread extends Thread {
 							e.printStackTrace();
 						}
 					}
+					
+					// Set response jBPM Global Variable List
+					// kcontext.getKnowledgeRuntime().setGlobal("response", "");
 					response = jbpmRules.receive(deviceEvent);
 					if ((response != null) && (response.length() > 0)) {
 						out.println(response);
 						System.out.println("> TRACE RSP " + response);
 					}
-					sendHttpTextResp(200, "OK");
+					sendHttpTextResp(200, response);
 				}
 			}
 
@@ -106,6 +109,12 @@ public class IoTServerThread extends Thread {
 
 		out.println("HTTP/1.1 " + status + " " + headerText);
 		out.println("Content-Length: 0");
+		
+		if(response == null || response.length() == 0) {
+			// No trailer
+		} else {
+			out.println(response); 
+		}
 		out.println(""); // do not forget this one
 
 		out.flush();

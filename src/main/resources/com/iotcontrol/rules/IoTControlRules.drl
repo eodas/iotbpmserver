@@ -4,8 +4,8 @@ package com_iotcontrol
 import com.iotbpm.model.StateList;
 import com.iotbpm.model.DeviceEvent;
 
-// default dialect for the semantic code will be MVEL
-dialect "mvel"
+// default dialect for the semantic code will be JAVA
+dialect "java"
 
 //declare rule to fire when temp is over 73
 rule "temperature reading too warm"

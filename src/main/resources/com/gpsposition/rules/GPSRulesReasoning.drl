@@ -4,8 +4,8 @@ package com_gpsposition
 import com.iotbpm.model.StateList;
 import com.iotbpm.model.DeviceEvent;
 
-// default dialect for the semantic code will be MVEL
-dialect "mvel"
+// default dialect for the semantic code will be JAVA
+dialect "java"
 
 rule "GPS Device Distance"
 	when
